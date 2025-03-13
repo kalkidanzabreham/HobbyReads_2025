@@ -1,5 +1,4 @@
 # Enduro_app_2025
-About Enduro
 Enduro is a fitness tracking web application designed to help users log workouts, track progress, and stay motivated through fitness challenges. The name "Enduro" is inspired by endurance—the ability to push limits, stay consistent, and improve over time. Whether you're lifting weights, running, or training for a goal, Enduro helps you stay on track.
 Key Features
 1. Workout Log (CRUD)
