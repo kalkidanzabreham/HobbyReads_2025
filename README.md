@@ -1,18 +1,16 @@
-# Enduro_app_2025
-Enduro is a fitness tracking web application designed to help users log workouts, track progress, and stay motivated through fitness challenges. The name "Enduro" is inspired by endurance—the ability to push limits, stay consistent, and improve over time. Whether you're lifting weights, running, or training for a goal, Enduro helps you stay on track.
-Key Features
-1. Workout Log (CRUD)
-Users can create, update, delete, and view workout sessions.
-Track exercise type, sets, reps, duration, and calories burned.
-Helps users maintain a structured fitness routine.
-2. Progress Tracker (CRUD)
-Log and visualize fitness progress (e.g., weight changes, running distances).
-Weekly/monthly graphs and reports for performance analysis.
-Encourages consistency with data-driven insights.
-3. Activity Challenge Mode (CRUD)
-Users can set and track fitness challenges 
-Progress tracking to stay on course and meet goals.
-Admins can create public challenges for community engagement.
+# HobbyReads_2025
+HobbyReads allows users to connect with others based on shared hobbies and interests, focusing on exchanging ideas about books they’ve read. Users can share reviews, recommend books, and even trade books with local people. 
+
+Core Features:
+1.Book Exchange & Reviews:
+Users can list books they’ve read or are willing to trade.
+Include book details such as title, author, genre, condition, and a brief description.
+Users can share reviews, ratings, and recommendations for books they've read.
+Allows users to search for books based on genre, title, or author, and request to borrow or trade them with others.
+
+2.Hobby-Based User Matching:
+Users can select hobbies or interests they enjoy (e.g., reading, hiking, photography).
+The app suggests potential connections based on shared hobbies and books.
 
 
 
