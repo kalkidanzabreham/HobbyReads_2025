@@ -47,6 +47,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/hobbies", hobbyRoutes);
 app.use("/api/connections", connectionRoutes);
 app.use("/api/trades", tradeRoutes);
+app.use("/uploads", express.static(path.join(__dirname, "public", "uploads")));
 
 // Simple route for testing
 app.get("/", (req, res) => {
