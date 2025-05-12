@@ -17,4 +17,11 @@ class AppNavigation(
 
             )
         }
+        composable(route = Screen.AdminDashboard.route) { AdminDashboardScreen(navController) }
+        composable(route = Screen.Users.route) { UsersScreen(navController) }
+        composable(route = Screen.Hobbies.route) { HobbiesScreen(navController) }
+
+         composable(route = Screen.Profile.route) {
+            ProfileScreen(navController = navController)
+        }
 }
