@@ -71,8 +71,8 @@ interface ApiService {
         @Part("title") title: RequestBody,
         @Part("author") author: RequestBody,
         @Part("description") description: RequestBody,
-        @Part("status") status: RequestBody,              // ✅ added
-        @Part("bookCondition") bookCondition: RequestBody, // ✅ added
+        @Part("status") status: RequestBody,              
+        @Part("bookCondition") bookCondition: RequestBody, 
         @Part("genre") genre: RequestBody?,
         @Part("isbn") isbn: RequestBody?,
         @Part("publishYear") publishYear: RequestBody?,
@@ -192,5 +192,27 @@ interface ApiService {
         @Path("connectionId") connectionId: Int
     ): Response<Unit>
 
+
+    // Trade request endpoints
+    @GET("trades/pending")
+    suspend fun getPendingTradeRequests(@Header("Authorization") token: String): Response<List<TradeRequest>>
+
+    @POST("trades")
+    suspend fun createTradeRequest(
+        @Header("Authorization") token: String,
+        @Body tradeRequest: TradeRequestCreate
+    ): Response<TradeRequest>
+
+    @PUT("trades/{id}")
+    suspend fun updateTradeRequestStatus(
+        @Header("Authorization") token: String,
+        @Path("id") tradeId: Int,
+        @Body statusUpdate: TradeRequestStatusUpdate
+    ): Response<TradeRequest>
+
+    @GET("trades/user/{userId}")
+    suspend fun getAcceptedRequests(
+        @Path("userId") userId: String
+    ): List<TradeRequest>
 
 }
