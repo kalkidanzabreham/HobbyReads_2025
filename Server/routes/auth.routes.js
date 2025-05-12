@@ -9,6 +9,7 @@ router.post("/register", authController.register)
 // Login user
 router.post("/login", authController.login)
 
-
+// Get current user profile (protected route)
+router.get("/profile", verifyToken, authController.getUserProfile)
 
 module.exports = router
