@@ -54,6 +54,77 @@ interface ApiService {
         @Body passwordData: Map<String, String>
     ): Response<Map<String, String>>
 
+    // Book endpoints
+    @GET("books")
+    suspend fun getBooks(@Header("Authorization") token: String): Response<List<Book>>
+
+    @GET("books/{id}")
+    suspend fun getBookById(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Response<Book>
+
+    @Multipart
+    @POST("books")
+    suspend fun addBook(
+        @Header("Authorization") token: String,
+        @Part("title") title: RequestBody,
+        @Part("author") author: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("status") status: RequestBody,              // ✅ added
+        @Part("bookCondition") bookCondition: RequestBody, // ✅ added
+        @Part("genre") genre: RequestBody?,
+        @Part("isbn") isbn: RequestBody?,
+        @Part("publishYear") publishYear: RequestBody?,
+        @Part coverImage: MultipartBody.Part?
+    ): Response<Book>
+
+
+    @DELETE("books/{id}")
+    suspend fun deleteBook(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Response<Void>
+
+    @GET("books/my")
+    suspend fun getMyBooks(
+        @Header("Authorization") token: String
+    ): Response<List<Book>>
+
+
+
+
+    // Review endpoints
+    @GET("books/{bookId}/reviews")
+    suspend fun getReviewsForBook(
+        @Header("Authorization") token: String,
+        @Path("bookId") bookId: String
+    ): Response<List<Review>>
+
+    @POST("reviews")
+    suspend fun addReview(
+        @Header("Authorization") token: String,
+        @Body reviewData: Map<String, String>
+    ): Response<Review>
+
+    @GET("reviews/books/{bookId}")
+    suspend fun getReviews(
+        @Path("bookId") bookId: String // Pass the bookId as a path parameter
+    ): Response<List<Review>>
+
+    @PUT("books/{bookId}/status")
+    suspend fun updateBookStatus(
+        @Path("bookId") bookId: Int,
+        @Body statusUpdate: String
+    )
+
+    @PUT("reviews/{id}")
+    suspend fun updateReview(@Path("id") reviewId: Int, @Body review: Review): Response<Review>
+
+    @DELETE("reviews/{id}")
+    suspend fun deleteReview(@Path("id") reviewId: Int): Response<Void>
+
+
     @GET("admin/stats/hobbies")
     suspend fun getHobbyStats(@Header("Authorization") token: String): Response<Map<String, Int>>
     @DELETE("users/{id}")
@@ -85,11 +156,6 @@ interface ApiService {
         @Path("id") hobbyId: Int
     ): Response<Map<String, String>>
 
-    @HTTP(method = "DELETE", path = "users/delete-account", hasBody = true)
-    suspend fun deleteAccount(
-        @Header("Authorization") token: String,
-        @Body passwordData: Map<String, String>
-    ): Response<Map<String, String>>
 
 
     // Connection endpoints
