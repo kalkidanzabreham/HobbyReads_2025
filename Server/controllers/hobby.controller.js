@@ -83,6 +83,7 @@ exports.getAllHobbies = async (req, res) => {
         return res.status(404).send({
           message: "Hobby not found.",
         })
+        
       }
   
       // Check if new name already exists
