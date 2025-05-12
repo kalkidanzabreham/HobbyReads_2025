@@ -28,6 +28,32 @@ interface ApiService {
     @GET("admin/stats/users")
     suspend fun getUserStats(@Header("Authorization") token: String): Response<Map<String, Int>>
 
+    // User endpoints
+    @GET("users/me")
+    suspend fun getCurrentUser(@Header("Authorization") token: String): Response<User>
+
+    @Multipart
+    @PUT("users/profile")
+    suspend fun updateProfile(
+        @Header("Authorization") token: String,
+        @Part("name") name: RequestBody,
+        @Part("bio") bio: RequestBody,
+        @Part("hobbies") hobbies: RequestBody,
+        @Part profilePicture: MultipartBody.Part?
+    ): Response<User>
+
+    @PUT("users/change-password")
+    suspend fun changePassword(
+        @Header("Authorization") token: String,
+        @Body passwordData: Map<String, String>
+    ): Response<Map<String, String>>
+
+    @HTTP(method = "DELETE", path = "users/delete-account", hasBody = true)
+    suspend fun deleteAccount(
+        @Header("Authorization") token: String,
+        @Body passwordData: Map<String, String>
+    ): Response<Map<String, String>>
+
     @GET("admin/stats/hobbies")
     suspend fun getHobbyStats(@Header("Authorization") token: String): Response<Map<String, Int>>
     @DELETE("users/{id}")
