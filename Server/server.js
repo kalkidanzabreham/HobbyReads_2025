@@ -30,11 +30,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // import routes
-const authRoutes = require("./routes/auth.routes")
-
+const authRoutes = require("./routes/auth.routes");
+const userRoutes = require("./routes/user.routes");
+const bookRoutes = require("./routes/book.routes");
 
 // Use routes
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/books", bookRoutes);
 
 // Simple route for testing
 app.get("/", (req, res) => {
