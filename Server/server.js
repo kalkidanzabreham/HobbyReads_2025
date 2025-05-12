@@ -17,6 +17,13 @@ global.db = pool;
 
 const app = express();
 
+// Initialize database
+const initDb = require("./config/db.init");
+initDb().catch((err) => {
+  console.error("Database initialization failed:", err);
+  process.exit(1);
+});
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
