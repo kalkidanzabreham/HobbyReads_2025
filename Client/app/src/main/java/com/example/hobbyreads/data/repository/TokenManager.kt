@@ -3,7 +3,7 @@ package com.example.hobbyreads.data.repository
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import com.example.hobby.util.Constants
+import com.example.hobbyreads.util.Constants
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton

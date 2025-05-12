@@ -59,5 +59,11 @@ interface ApiService {
         @Path("id") hobbyId: Int
     ): Response<Map<String, String>>
 
+    @HTTP(method = "DELETE", path = "users/delete-account", hasBody = true)
+    suspend fun deleteAccount(
+        @Header("Authorization") token: String,
+        @Body passwordData: Map<String, String>
+    ): Response<Map<String, String>>
+
 
 }

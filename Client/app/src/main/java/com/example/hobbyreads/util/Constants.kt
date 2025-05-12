@@ -1,4 +1,4 @@
-package com.example.hobby.util
+package com.example.hobbyreads.util
 
 object Constants {
     // For emulator

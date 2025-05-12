@@ -2,7 +2,7 @@ package com.example.hobbyreads.data.repository
 
 
 import android.util.Log
-import com.example.hobby.util.Resource
+import com.example.hobbyreads.util.Resource
 import com.example.hobbyreads.data.model.AuthResponse
 import com.example.hobbyreads.data.api.ApiService
 import com.example.hobbyreads.data.model.AuthRequest

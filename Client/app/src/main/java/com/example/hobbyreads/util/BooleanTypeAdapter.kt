@@ -1,4 +1,4 @@
-package com.example.hobby.util
+package com.example.hobbyreads.util
 
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader

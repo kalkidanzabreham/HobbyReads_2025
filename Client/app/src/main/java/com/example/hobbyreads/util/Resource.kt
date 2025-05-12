@@ -1,4 +1,4 @@
-package com.example.hobby.util
+package com.example.hobbyreads.util
 
 sealed class Resource<out T> {
     data class Success<out T>(val data: T) : Resource<T>()
