@@ -11,4 +11,10 @@ class AppNavigation(
     tokenManager: TokenManager,
     gson: Gson
 ) {
+    composable(route = Screen.Connections.route) {
+            ConnectionsScreen(
+                navController = navController,
+
+            )
+        }
 }
