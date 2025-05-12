@@ -37,6 +37,7 @@ const bookRoutes = require("./routes/book.routes");
 const reviewRoutes = require("./routes/review.routes");
 const hobbyRoutes = require("./routes/hobby.routes");
 const connectionRoutes = require("./routes/connection.routes");
+const tradeRoutes = require("./routes/trade.routes");
 
 // Use routes
 app.use("/api/auth", authRoutes);
@@ -45,6 +46,7 @@ app.use("/api/books", bookRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/hobbies", hobbyRoutes);
 app.use("/api/connections", connectionRoutes);
+app.use("/api/trades", tradeRoutes);
 
 // Simple route for testing
 app.get("/", (req, res) => {
