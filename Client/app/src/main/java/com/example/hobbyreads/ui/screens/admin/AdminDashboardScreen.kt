@@ -25,7 +25,6 @@ import com.example.hobbyreads.R
 import com.example.hobbyreads.ui.components.AdminTopBar
 import com.example.hobbyreads.ui.navigation.Screen
 import com.example.hobbyreads.ui.viewmodel.AdminViewModel
-import com.example.hobbyreads.util.Resource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

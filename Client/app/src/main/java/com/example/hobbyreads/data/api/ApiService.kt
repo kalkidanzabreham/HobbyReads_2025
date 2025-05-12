@@ -14,6 +14,13 @@ interface ApiService {
 
     @POST("auth/register")
     suspend fun register(@Body registerRequest: RegisterRequest): Response<AuthResponse>
+
+    // User endpoints
+    @GET("auth/profile")  // Correct endpoint URL
+    suspend fun getUserProfile(
+        @Header("Authorization") token: String  // Ensure that token is passed as an Authorization header
+    ): Response<User>
+
      // User endpoints
     @GET("users")
     suspend fun getAllUsers(@Header("Authorization") token: String): Response<List<User>>
