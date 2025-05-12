@@ -2,9 +2,14 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    // Use kapt without specifying version
     kotlin("kapt")
+    // For Hilt
     id("com.google.dagger.hilt.android")
 }
+
+// Access the compose version from the root project
+val composeVersion = rootProject.extra.get("composeVersion") as String
 
 android {
     namespace = "com.example.hobbyreads"
@@ -42,22 +47,43 @@ android {
 }
 
 dependencies {
-
+    // Core Android dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+
+    // Compose dependencies
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.navigation.compose)
+
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.6")
+
+    // DataStore for preferences
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+
+    // Retrofit for API calls
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
 
     // Dependency Injection - Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
 
     // Gson
     implementation ("com.google.code.gson:gson:2.10.1")
@@ -69,6 +95,16 @@ dependencies {
     // Hilt Navigation Compose
     implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
 
+    // Image loading
+    implementation(libs.coil.compose)
+
+    // EncryptedSharedPreferences
+    implementation ("androidx.security:security-crypto:1.1.0-alpha06")
+
+    // Use the compose version from the root project
+    implementation("androidx.compose.material:material-icons-extended:$composeVersion")
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
