@@ -29,6 +29,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// import routes
+const authRoutes = require("./routes/auth.routes")
+
+
+// Use routes
+app.use("/api/auth", authRoutes)
+
 // Simple route for testing
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to HobbyReads API" });
