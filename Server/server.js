@@ -1,32 +1,34 @@
-const express = require("express")
-const cors = require("cors")
-const path = require("path")
-const bodyParser = require("body-parser")
-const dotenv = require("dotenv")
-const mysql = require("mysql2/promise")
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+const mysql = require("mysql2/promise");
+const dbConfig = require("./config/db.config");
 
+// Load environment variables
+dotenv.config();
 
+// Create MySQL connection pool using the config
+const pool = mysql.createPool(dbConfig);
 
-const app = express()
+// Make the pool available globally
+global.db = pool;
+
+const app = express();
 
 // Middleware
-app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-
-
-
-
-
-
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Simple route for testing
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to HobbyReads API" })
-})
+  res.json({ message: "Welcome to HobbyReads API" });
+});
 
 // Start server
-const PORT = process.env.PORT || 8080
-app.listen(PORT,"0.0.0.0", () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}`);
+});
