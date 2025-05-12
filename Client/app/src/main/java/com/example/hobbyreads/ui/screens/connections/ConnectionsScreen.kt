@@ -31,7 +31,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.hobby.R
+import com.example.hobbyreads.R
 import com.example.hobbyreads.data.model.Connection
 import com.example.hobbyreads.ui.components.LoadingIndicator
 import com.example.hobbyreads.ui.navigation.Screen

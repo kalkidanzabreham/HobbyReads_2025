@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hobbyreads.ui.navigation.Screen
-import com.example.hobbyreads.ui.theme.HobbyTheme
+import com.example.hobbyreads.ui.theme.HobbyReadsTheme
 import com.example.hobbyreads.ui.theme.Purple40
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
@@ -340,7 +340,7 @@ fun Footer() {
 @Preview(showBackground = true)
 @Composable
 fun LandingScreenPreview() {
-    HobbyTheme {
+    HobbyReadsTheme {
         LandingScreen(navController = rememberNavController())
     }
 }
