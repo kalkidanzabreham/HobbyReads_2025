@@ -167,3 +167,53 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+// Get current user profile
+exports.getUserProfile = async (req, res) => {
+    try {
+      const pool = global.db
+  
+      // Get user data
+      const [users] = await pool.query(
+        "SELECT id, username, email, name, bio, profilePicture, isAdmin, createdAt, updatedAt FROM users WHERE id = ?",
+        [req.userId],
+      )
+  
+      if (users.length === 0) {
+        return res.status(404).send({
+          message: "User not found.",
+        })
+      }
+  
+      // Get user hobbies (with id and name)
+      const [hobbies] = await pool.query(
+        `SELECT h.id, h.name FROM hobbies h
+         JOIN user_hobbies uh ON h.id = uh.hobbyId
+         WHERE uh.userId = ?`,
+        [req.userId],
+      )
+  
+      // Build the response user object
+      const user = {
+        id: users[0].id,
+        username: users[0].username,
+        email: users[0].email,
+        name: users[0].name,
+        bio: users[0].bio || "",
+        profilePicture: users[0].profilePicture
+          ? `${req.protocol}://${req.get("host")}/uploads/profiles/${users[0].profilePicture}`
+          : null,
+        isAdmin: users[0].isAdmin,
+        createdAt: users[0].createdAt,
+        updatedAt: users[0].updatedAt,
+        hobbies: hobbies  // ✅ Now returns array of {id, name}
+      }
+  
+      res.status(200).send(user)
+      // console.log(user)
+    } catch (err) {
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving user profile.",
+      })
+    }
+  }
