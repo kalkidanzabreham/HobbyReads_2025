@@ -33,7 +33,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const bookRoutes = require("./routes/book.routes");
-const reviewRoutes = require("./routes/review.routes")
+const reviewRoutes = require("./routes/review.routes");
+const hobbyRoutes = require("./routes/hobby.routes")
+
 
 
 
@@ -42,6 +44,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/reviews", reviewRoutes)
+app.use("/api/hobbies", hobbyRoutes)
+
 
 
 // Simple route for testing
