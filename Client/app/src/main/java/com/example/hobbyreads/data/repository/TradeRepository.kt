@@ -1,9 +1,9 @@
-package com.example.hobby.data.repository
+package com.example.hobbyreads.data.repository
 
-import com.example.hobby.data.api.ApiService
-import com.example.hobby.data.model.TradeRequest
-import com.example.hobby.data.model.TradeRequestCreate
-import com.example.hobby.data.model.TradeRequestStatusUpdate
+import com.example.hobbyreads.data.api.ApiService
+import com.example.hobbyreads.data.model.TradeRequest
+import com.example.hobbyreads.data.model.TradeRequestCreate
+import com.example.hobbyreads.data.model.TradeRequestStatusUpdate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
