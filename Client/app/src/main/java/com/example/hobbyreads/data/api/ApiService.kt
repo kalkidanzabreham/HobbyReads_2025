@@ -66,4 +66,39 @@ interface ApiService {
     ): Response<Map<String, String>>
 
 
+    // Connection endpoints
+    @GET("connections")
+    suspend fun getConnections(@Header("Authorization") token: String): Response<List<Connection>>
+
+    @GET("connections/pending")
+    suspend fun getPendingConnections(@Header("Authorization") token: String): Response<List<Connection>>
+
+    @GET("connections/suggested")
+    suspend fun getSuggestedConnections(@Header("Authorization") token: String): Response<List<Connection>>
+
+    @POST("connections/{userId}")
+    suspend fun sendConnectionRequest(
+        @Header("Authorization") token: String,
+        @Path("userId") userId: Int
+    ): Response<Connection>
+
+    @PUT("connections/{connectionId}/accept")
+    suspend fun acceptConnection(
+        @Header("Authorization") token: String,
+        @Path("connectionId") connectionId: Int
+    ): Response<Connection>
+
+    @PUT("connections/{connectionId}/reject")
+    suspend fun rejectConnection(
+        @Header("Authorization") token: String,
+        @Path("connectionId") connectionId: Int
+    ): Response<Connection>
+
+    @DELETE("connections/{connectionId}")
+    suspend fun removeConnection(
+        @Header("Authorization") token: String,
+        @Path("connectionId") connectionId: Int
+    ): Response<Unit>
+
+
 }
